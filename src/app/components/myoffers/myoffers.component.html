@@ -1,0 +1,52 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="login-wrap">
+  <div class="login-html">
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab"></label>
+    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+
+    <div class="login-form">
+      <form (ngSubmit)="onSubmit()">
+        <div class="sign-in-htm">
+          <h3>Create Offer</h3>
+          <div class="group">
+            <label class="label">Offer Name</label>
+            <input [(ngModel)]="myOffer.name" type="text" name="offerName" class="input">
+          </div>
+          <div class="group">
+            <label class="label">Offer price</label>
+            <input [(ngModel)]="myOffer.price" type="number" name="offerPrice" class="input">
+          </div>
+          <div class="group">
+            <label class="label">Offer country</label>
+            <input [(ngModel)]="myOffer.country" type="text" name="conutry" class="input">
+          </div>
+          <div class="group">
+            <label class="label">Max Persons</label>
+            <input [(ngModel)]="myOffer.maxPerson" type="number" name="maxPersons" class="input">
+          </div>
+
+          <div class="group">
+            <label class="image-upload-container btn btn-bwm label">Offer picture</label>
+            <input (change)="onFileSelected($event)" accept="image/*" type="file" name="picture" class="input">
+          </div>
+<!--          <div class="group">-->
+<!--            <label class="label">Role</label>-->
+<!--            <select [(ngModel)]="user.role" name="role" class="input form-select">-->
+<!--              <option *ngFor="let role of roles" [value]="role.value">{{role.viewValue}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
+          <div class="group">
+            <input type="submit" class="button" value="Create Offer">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
