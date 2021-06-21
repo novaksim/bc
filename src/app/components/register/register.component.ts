@@ -33,11 +33,16 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.authService.register(this.user).subscribe(result => this.handleSuccesRegistration(), error => this.handleErrorRegistration(error))
+    this.authService.register(this.user).subscribe(result => this.handleSuccesRegistration(result), error => this.handleErrorRegistration(error))
   }
 
-  handleSuccesRegistration(): void {
-    this.router.navigate(['login'])
+  handleSuccesRegistration(data:object): void {
+    console.log(data)
+    this.isValidLogin()
+    if (this.isValidLog) {
+      this.router.navigate(['login'])
+    }
+    this.router.navigate(['manageOffers'])
   }
 
   handleErrorRegistration(error: { error: { message: any; }; }): void {

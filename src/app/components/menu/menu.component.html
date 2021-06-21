@@ -30,9 +30,9 @@
         <li class="nav-item">
           <a class="nav-link js-scroll" *ngIf="!loggedIn" routerLink="/registration">Registrácia</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll" *ngIf="isAdmin" routerLink="/registration">Registrácia</a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link js-scroll" *ngIf="isAdmin" routerLink="/registration">Registrácia</a>-->
+<!--        </li>-->
         <li class="nav-item">
           <a class="nav-link js-scroll" *ngIf="authService.isUserLoggin()" (click)="authService.logout()" >Odhlásiť sa</a>
         </li>

@@ -19,6 +19,10 @@ export class UserService implements CanActivate{
     return this.http.get<User[]>(this.userUrl + '/getAllUsers');
   }
 
+  public deleteUser(user:User) {
+    this.http.delete(this.userUrl + '/deleteUser/' + user.username).subscribe()
+  }
+
   public getUserInfo(): Observable<User> {
     return this.http.post<User>(this.userUrl + '/getUserInfo', sessionStorage.getItem("username"));
   }
