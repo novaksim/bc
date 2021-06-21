@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
       this.authService.getUserRole(this.user.username).subscribe(data => this.handleSuccesGetRole(data),
         error => sessionStorage.setItem('role', error.error.text))
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']).then(window.location.reload)
     } else {
       alert("Bad credentials");
       this.user.password = ''
