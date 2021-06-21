@@ -16,7 +16,7 @@
         <b>SPRAVOVANIE </b>Používateľov
       </div>
       <div class="col-6" >
-        <a href="#" class="btn btn-light float-right"><i class="bi bi-plus-circle-fill icon-plus"></i><span>  Add New User</span></a>
+        <a routerLink="/registration" class="btn btn-light float-right"><i class="bi bi-plus-circle-fill icon-plus"></i><span>  Add New User</span></a>
 
     </div>
   </div>
@@ -39,8 +39,8 @@
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
       <td class="col-md-1">
-        <a href="#" class="settings" title="" data-toggle="tooltip" data-original-title="Settings"><i class="bi bi-gear-fill color-a"></i></a>
-        &nbsp;
+        <a (click)="deleteUser(user)" class="settings" title="" data-toggle="tooltip" data-original-title="Settings"><i class="bi bi-gear-fill color-a"></i></a>
+          &nbsp;
         <a href="#" class="delete" title="" data-toggle="tooltip" data-original-title="Delete"><i class="bi bi-x-circle-fill color-red"></i></a>
       </td>
     </tr>

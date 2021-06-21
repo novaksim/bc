@@ -34,7 +34,7 @@
                     <button type="button" class="btn btn-outline-info">Otvoriť</button></a>
                 </div>
                 <div>
-                    <button type="button" (click)="remove(offer.id)" class="btn btn-outline-danger">Remove</button>
+                    <button type="button" *ngIf="(isAdmin) || (loggedUser === offer.user.username)"  (click)="remove(offer.id)" class="btn btn-outline-danger">Remove</button>
                 </div>
               </div>
             </div>
