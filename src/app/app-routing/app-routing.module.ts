@@ -10,6 +10,7 @@ import {OffersComponent} from "../components/offers/offers.component";
 import {OfferComponent} from "../components/offer/offer.component";
 import {MyoffersComponent} from "../components/myoffers/myoffers.component";
 import {ManagementComponent} from "../components/management/management.component";
+import {ReservationComponent} from "../components/reservation/reservation.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'offers', component: OffersComponent },
   { path: 'manageOffers', component: ManagementComponent },
   { path: 'profil', component: OffersComponent, canActivate:[UserService] },
+  { path: 'offer/reservation/:name', component: ReservationComponent, canActivate:[UserService] },
   { path: 'offers/:name', component: OfferComponent, canActivate:[UserService] },
   { path: 'myOffers', component: MyoffersComponent, canActivate:[UserService] },
   { path: 'registration', component: RegisterComponent },

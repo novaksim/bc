@@ -49,7 +49,7 @@ export class AuthServiceService {
   }
 
   isUserLoggin(): boolean {
-    return sessionStorage.getItem('successLogin') === 'true'
+    return sessionStorage.getItem('username') !== ''
   }
 
   isUserLogginAsdmin(): boolean {

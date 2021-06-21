@@ -23,7 +23,6 @@ export class ValidateService {
     ))
   }
 
-
   public isValidLoginAdmin(): Observable<boolean> {
     let token = localStorage.getItem('token')
     let username = localStorage.getItem('username')
