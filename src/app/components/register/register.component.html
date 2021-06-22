@@ -19,23 +19,23 @@
         <div class="sign-in-htm">
           <div class="group">
             <label class="label">Username</label>
-            <input [(ngModel)]="user.username" type="text" name="username" class="input">
+            <input [(ngModel)]="user.username" required type="text" name="username" class="input">
           </div>
           <div class="group">
             <label class="label">Password</label>
-            <input [(ngModel)]="user.password" type="password" name="passowrd" class="input">
+            <input [(ngModel)]="user.password" required type="password" name="passowrd" class="input">
           </div>
           <div class="group">
             <label class="label">Email</label>
-            <input [(ngModel)]="user.email" type="text" name="email" class="input">
+            <input [(ngModel)]="user.email" required type="text" name="email" class="input">
           </div>
           <div class="group">
             <label class="label">Full name</label>
-            <input [(ngModel)]="user.name" type="text" name="name" class="input">
+            <input [(ngModel)]="user.name" required type="text" name="name" class="input">
           </div>
           <div class="group" *ngIf="isValidAdmin">
             <label class="label">Role</label>
-            <select [(ngModel)]="user.role" name="role" class="input form-select">
+            <select [(ngModel)]="user.role" required name="role" class="input form-select">
               <option *ngFor="let role of roles" [value]="role.value">{{role.viewValue}}</option>
             </select>
           </div>
