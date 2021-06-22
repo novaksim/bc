@@ -1,6 +1,6 @@
 <section id="offers" class="portfolio-mf sect-pt4 route">
   <div class="container">
-    <div class="row">
+    <div class="row off">
       <div class="col-sm-12">
         <div class="title-box text-center">
           <h3 class="title-a">
@@ -25,16 +25,16 @@
               <div class="col-sm-8 ">
                 <h2 class="w-title ">{{offer.name}}</h2>
                 <div class="w-more ">
-                  <span class="country ">{{offer.country}}</span> - <span class="city ">Mesto</span> / <span class="price ">{{offer.price}} (noc)</span>
+                  <span class="country ">{{offer.country}}</span> - <span class="city ">Mesto</span> / <span class="price ">{{offer.price}} €</span>
                 </div>
               </div>
               <div class="col-sm-4 ">
                 <div class="w-like ">
                   <a [routerLink]="['/offer/reservation', offer.name]">
-                    <button type="button" class="btn btn-outline-info">Otvoriť</button></a>
+                    <button type="button" class="btn btn-outline-info offer-btn">Otvoriť</button></a>
                 </div>
                 <div>
-                    <button type="button" *ngIf="(isAdmin) || (loggedUser === offer.user.username)"  (click)="remove(offer.id)" class="btn btn-outline-danger">Vymazať</button>
+                    <button type="button" *ngIf="(isAdmin) || (loggedUser === offer.user.username)"  (click)="remove(offer.id)" class="btn btn-outline-danger offer-btn">Vymazať</button>
                 </div>
               </div>
             </div>

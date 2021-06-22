@@ -27,7 +27,17 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe(value => {
+      this.validateService.isValidLogin().subscribe(data => this.handleSuccessLogin(data))
+      // this.userName = this.authService.getUserInfo();
+      this.validateService.isValidLoginAdmin().subscribe(data => this.handleSuccess(data));
+    });
+    this.validateService.isValidLogin().subscribe(data => this.handleSuccessLogin(data))
+    // this.userName = this.authService.getUserInfo();
+    this.validateService.isValidLoginAdmin().subscribe(data => this.handleSuccess(data));
+
+  }
 
   private handleSuccessLogin(data: boolean) {
     this.loggedIn = data;
