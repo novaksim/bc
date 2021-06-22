@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Aktualizácia užívateľa</h4>
+</div>
+<form #updateUser="ngForm" (ngSubmit)="onSubmit(updateUser.value.role)">
+  <div class="modal-body">
+    <div class="form-group">
+      <div class="input-group">
+        <label class="label">Role</label>
+        <select required name="role" [value]="user.role" class="input form-select form-control" ngModel>
+          <option *ngFor="let role of roles" [value]="role.value" name="role">{{role.viewValue}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="group">
+      <input type="submit" class="button" value="Upraviť rolu">
+    </div>
+  </div>
+</form>
+

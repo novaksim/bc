@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Offer} from "../classes/offer";
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {Reservation} from "../classes/reservation";
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,10 @@ export class OfferService {
 
   getOfferByName(name: string | null): Observable<Offer> {
     return this.http.get<Offer>(this.url + '/offer/getOfferByName?name=' + name);
+  }
+
+  saveReservation(reservation:Reservation) {
+    return this.http.post(this.url + "/saveReservation", reservation);
   }
 
 }

@@ -9,7 +9,7 @@ import {OffersComponent} from './components/offers/offers.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {HomeComponent} from './components/home/home.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RegisterComponent} from './components/register/register.component';
 import {ProfileComponent} from './components/profile/profile.component';
@@ -23,6 +23,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 // import {HttpIntercepterBasicAuthService} from "./services/http/http-intercepter-basic-auth.service";
 // import {HttpClientModule} from "@angular/common/http";
 
@@ -40,19 +41,21 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     OfferComponent,
     MyoffersComponent,
     ManagementComponent,
-    ReservationComponent
+    ReservationComponent,
+    UserDetailsComponent
   ],
-  imports: [
-    MatDatepickerModule,
-    MatNativeDateModule,
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule
-  ],
+    imports: [
+        MatDatepickerModule,
+        MatNativeDateModule,
+        BrowserModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule
+    ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })

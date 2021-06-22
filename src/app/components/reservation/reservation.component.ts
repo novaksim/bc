@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {OfferService} from "../../services/offer.service";
 import {Offer} from "../../classes/offer";
+import {Reservation} from "../../classes/reservation";
+import {FormControl, FormGroup} from "@angular/forms";
+import {User} from "../../classes/user";
+import {Roles} from "../../classes/roles";
 
 
 @Component({
@@ -11,8 +15,14 @@ import {Offer} from "../../classes/offer";
 })
 export class ReservationComponent implements OnInit {
 
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
   value: string | null = ''
   offer: Offer = new Offer('', '', '', 0, '')
+  reservation:Reservation = new Reservation(this.offer, localStorage.getItem('username'), '')
+
 
   constructor(private router: ActivatedRoute, private offerService: OfferService) {
   }
@@ -24,6 +34,18 @@ export class ReservationComponent implements OnInit {
 
   handleSucess(data: Offer) {
     this.offer = data
+    this.offerService.getPictureById(data.picture).subscribe(picture => {
+      console.log(picture.data)
+      this.offer.image = picture.data;
+    })
   }
 
+  onSubmit() {
+    this.reservation.offer = this.offer;
+    this.reservation.date = this.range.get("start")?.value + "-" + this.range.get("end")?.value;
+    this.reservation.offer.user = new User("", "", "", "", Roles.USER);
+    console.log(this.reservation.date)
+    this.offerService.saveReservation(this.reservation).subscribe(data => alert("Rezervácia úspešná"),
+        error => alert("Rezervácia neúspešná"))
+  }
 }

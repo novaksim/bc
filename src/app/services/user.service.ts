@@ -24,7 +24,7 @@ export class UserService implements CanActivate{
   }
 
   public getUserInfo(): Observable<User> {
-    return this.http.post<User>(this.userUrl + '/getUserInfo', sessionStorage.getItem("username"));
+    return this.http.post<User>(this.userUrl + '/getUserInfo', localStorage.getItem("username"));
   }
 
   public save(user: User) {

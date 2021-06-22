@@ -39,7 +39,7 @@
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
       <td class="col-md-1">
-        <a class="settings" title="" data-toggle="tooltip" data-original-title="Settings"><i class="bi bi-gear-fill color-a"></i></a>
+        <a class="settings" title="" (click)="openModal(user)" data-toggle="tooltip" data-original-title="Settings"><i class="bi bi-gear-fill color-a"></i></a>
           &nbsp;
         <a (click)="deleteUser(user)" class="delete" title="" data-toggle="tooltip" data-original-title="Delete"><i class="bi bi-x-circle-fill color-red"></i></a>
       </td>

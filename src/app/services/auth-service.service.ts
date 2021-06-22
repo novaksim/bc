@@ -60,6 +60,12 @@ export class AuthServiceService {
     return this.http.get(this.userUrl + '/hello')
   }
 
+  updateRole(username: string, role: string) {
+    this.http.put(this.userUrl + '/user/' + username + '/role', role).subscribe(input => {
+      console.log(input)
+    });
+  }
+
   public basicAuth(username: string, password: string,) {
 
     this.http.get<AuthenticationBean>(`http://localhost:8080/auth/basicAuth`)
