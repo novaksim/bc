@@ -25,7 +25,7 @@ export class AuthServiceService {
   }
 
     public register(user: User): Observable<User> {
-    return this.http.post<User>(this.userUrl + '/register', user)
+    return this.http.post<User>(this.userUrl + '/register', user, { params: { intercept: true } })
   }
 
   public getToken(): string {
