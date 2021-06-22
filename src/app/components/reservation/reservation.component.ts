@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {OfferService} from "../../services/offer.service";
 import {Offer} from "../../classes/offer";
 import {Reservation} from "../../classes/reservation";
@@ -24,7 +24,7 @@ export class ReservationComponent implements OnInit {
   reservation:Reservation = new Reservation(this.offer, localStorage.getItem('username'), '')
 
 
-  constructor(private router: ActivatedRoute, private offerService: OfferService) {
+  constructor(private router: ActivatedRoute, private offerService: OfferService, private routerNavigate:Router) {
   }
 
   ngOnInit(): void {
@@ -45,7 +45,9 @@ export class ReservationComponent implements OnInit {
     this.reservation.date = this.range.get("start")?.value + "-" + this.range.get("end")?.value;
     this.reservation.offer.user = new User("", "", "", "", Roles.USER);
     console.log(this.reservation.date)
-    this.offerService.saveReservation(this.reservation).subscribe(data => alert("Rezervácia úspešná"),
-        error => alert("Rezervácia neúspešná"))
+    this.offerService.saveReservation(this.reservation).subscribe(data => {
+        alert("Rezervácia úspešná")
+        this.routerNavigate.navigate(['home'])
+      },error => alert("Rezervácia neúspešná"))
   }
 }

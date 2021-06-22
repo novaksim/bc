@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {User} from "../../classes/user";
 import {Router} from "@angular/router";
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   jwt: Jwt = new Jwt(this.user, "")
   successLogin: boolean = false;
 
-  constructor(private userService: UserService, private router: Router, private authService: AuthServiceService) {
+  constructor(private zone:NgZone, private userService: UserService, private router: Router, private authService: AuthServiceService) {
   }
 
   ngOnInit(): void {
@@ -39,7 +39,10 @@ export class LoginComponent implements OnInit {
 
       this.authService.getUserRole(this.user.username).subscribe(data => this.handleSuccesGetRole(data),
         error => sessionStorage.setItem('role', error.error.text))
-      this.router.navigate(['/home']).then(window.location.reload)
+      this.zone.run(() => {
+        this.router.navigateByUrl('/home')
+      })
+     // this.router.navigate(['/home']).then(window.location.reload)
     } else {
       alert("Bad credentials");
       this.user.password = ''
