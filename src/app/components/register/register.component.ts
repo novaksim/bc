@@ -37,20 +37,18 @@ export class RegisterComponent implements OnInit {
   }
 
   handleSuccesRegistration(data:object): void {
-    console.log(data)
     this.router.navigate(['login'])
   }
 
   handleErrorRegistration(error: { error: { message: any; }; }): void {
-    console.log(error.error.message)
   }
 
   public isValidLogin() {
-    this.validateService.isValidLogin().subscribe(data => this.isValidLog = data, error => console.log("User Is Not Logged in"))
+    this.validateService.isValidLogin().subscribe(data => this.isValidLog = data, error => {})
   }
 
   public isValidLoginAdmin() {
-    this.validateService.isValidLoginAdmin().subscribe(data => this.isValidAdmin = data, error => console.log("User Is Not Admin"))
+    this.validateService.isValidLoginAdmin().subscribe(data => this.isValidAdmin = data, error => {})
   }
 
 }

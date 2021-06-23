@@ -25,7 +25,6 @@ export class ContactComponent implements OnInit {
     this.name = result.name
     this.email = result.email
     this.username = result.username
-    console.log(result)
   }
 
 }

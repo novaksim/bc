@@ -34,7 +34,7 @@ export class OfferService {
   }
 
   deleteOfer(id:number) {
-    this.http.delete(this.url + '/offer/delleteOffer/' + id).subscribe(data => console.log("delete" + id))
+    this.http.delete(this.url + '/offer/delleteOffer/' + id).subscribe(data => {})
   }
 
   getOfferByName(name: string | null): Observable<Offer> {

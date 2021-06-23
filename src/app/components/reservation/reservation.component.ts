@@ -35,7 +35,6 @@ export class ReservationComponent implements OnInit {
   handleSucess(data: Offer) {
     this.offer = data
     this.offerService.getPictureById(data.picture).subscribe(picture => {
-      console.log(picture.data)
       this.offer.image = picture.data;
     })
   }
@@ -44,7 +43,6 @@ export class ReservationComponent implements OnInit {
     this.reservation.offer = this.offer;
     this.reservation.date = this.range.get("start")?.value + "-" + this.range.get("end")?.value;
     this.reservation.offer.user = new User("", "", "", "", Roles.USER);
-    console.log(this.reservation.date)
     this.offerService.saveReservation(this.reservation).subscribe(data => {
         alert("Rezervácia úspešná")
         this.routerNavigate.navigate(['home'])

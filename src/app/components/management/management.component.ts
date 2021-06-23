@@ -21,14 +21,12 @@ export class ManagementComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe(data => {
       this.usersList = data
-      console.log(data)
     })
     this.username =  localStorage.getItem("username")
     this.usersList = this.usersList.filter(userToRemove => userToRemove.username !== this.username)
   }
 
   public deleteUser(user:User) {
-    console.log(user)
     this.usersList = this.usersList.filter(userToRemove => userToRemove.username !== user.username)
     this.userService.deleteUser(user);
   }

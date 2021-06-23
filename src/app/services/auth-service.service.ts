@@ -62,7 +62,7 @@ export class AuthServiceService {
 
   updateRole(username: string, role: string) {
     this.http.put(this.userUrl + '/user/' + username + '/role', role).subscribe(input => {
-      console.log(input)
+
     });
   }
 

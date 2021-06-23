@@ -43,13 +43,11 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onSubmit(value: any) {
-    console.log(this.user.role)
     if (value === "0") {
       this.user.role = Roles.USER;
     } else if (value === "1") {
       this.user.role = Roles.ADMIN;
     }
-    console.log(Roles[this.user.role])
     this.authService.updateRole(this.user.username, value);
     this.activeModal.close("Submit");
     window.location.reload()

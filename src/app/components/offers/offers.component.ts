@@ -22,17 +22,13 @@ export class OffersComponent implements OnInit {
     this.validateService.isValidLoginAdmin().subscribe(data => this.handleSucces(data))
     this.offerService.getAllOffers().subscribe(result => {
         this.offersList = result
-        console.log(this.offersList)
         this.offersList.forEach(offer => {
           this.offerService.getPictureById(offer.picture).subscribe(picture => {
-            console.log(picture.data)
             offer.image = picture.data;
           })
         })
       }
     )
-
-    console.log(this.offersList);
   }
 
   handleSucces = (data: boolean) => {

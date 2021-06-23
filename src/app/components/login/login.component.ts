@@ -58,14 +58,12 @@ export class LoginComponent implements OnInit {
   }
 
   errorHandle(error: { error: { message: any; }; }): void {
-    console.log(error.error.message);
     sessionStorage.setItem('successLogin', 'false');
     this.successLogin = false;
     alert("Bad credentials");
   }
 
   handleSuccesGetRole(data: Object) {
-    console.log(data)
   }
 
 
