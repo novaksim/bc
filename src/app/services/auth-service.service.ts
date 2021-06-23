@@ -45,7 +45,7 @@ export class AuthServiceService {
   public logout() {
     sessionStorage.clear();
     localStorage.clear();
-    this.router.navigate(['login'])
+    window.location.reload();
   }
 
   isUserLoggin(): boolean {

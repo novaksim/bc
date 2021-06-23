@@ -4,6 +4,8 @@ import {User} from "../classes/user";
 import {Observable} from "rxjs";
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from "@angular/router";
 import {AuthServiceService} from "./auth-service.service";
+import {ValidateService} from "./validate.service";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,9 @@ import {AuthServiceService} from "./auth-service.service";
 export class UserService implements CanActivate{
   private userUrl: string;
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthServiceService) {
+  constructor(private http: HttpClient, private router: Router,
+              private authService: AuthServiceService,
+              private valid:ValidateService) {
     this.userUrl = 'http://localhost:8080'
   }
 
@@ -27,18 +31,12 @@ export class UserService implements CanActivate{
     return this.http.post<User>(this.userUrl + '/getUserInfo', localStorage.getItem("username"));
   }
 
-  public save(user: User) {
-    return this.http.post<User>(this.userUrl + '/registration/register', user);
-  }
-
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.authService.isUserLoggin())
-      return true;
-    this.router.navigate(['login']);
-    return false;
+
+    return this.valid.isValidLogin().pipe(map(data => {
+        return data;
+      }
+    ))
   }
 
-  isAdmin(): boolean {
-    return sessionStorage.getItem('role') === 'admin' || sessionStorage.getItem('role') === 'employee'
-  }
 }

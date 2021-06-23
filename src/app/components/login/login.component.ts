@@ -6,6 +6,7 @@ import {AuthServiceService} from "../../services/auth-service.service";
 import {AuthUser} from "../../classes/auth-user";
 import {Jwt} from "../../classes/jwt";
 import {Roles} from "../../classes/roles";
+import {ValidateService} from "../../services/validate.service";
 
 @Component({
   selector: 'app-login',
@@ -18,10 +19,16 @@ export class LoginComponent implements OnInit {
   jwt: Jwt = new Jwt(this.user, "")
   successLogin: boolean = false;
 
-  constructor(private zone:NgZone, private userService: UserService, private router: Router, private authService: AuthServiceService) {
+  constructor(private zone:NgZone, private userService: UserService, private router: Router, private authService: AuthServiceService,
+              private validate:ValidateService) {
   }
 
   ngOnInit(): void {
+    this.validate.isValidLogin().subscribe(data => {
+      if (data) {
+        this.router.navigate(['home'])
+      }
+    })
   }
 
   onSubmit() {
@@ -41,6 +48,7 @@ export class LoginComponent implements OnInit {
         error => sessionStorage.setItem('role', error.error.text))
       this.zone.run(() => {
         this.router.navigateByUrl('/home')
+        window.location.reload();
       })
      // this.router.navigate(['/home']).then(window.location.reload)
     } else {

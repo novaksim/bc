@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent, canActivate:[UserService] },
   { path: 'home', component: HomeComponent},
   { path: 'offers', component: OffersComponent },
-  { path: 'manageOffers', component: ManagementComponent },
+  { path: 'manageOffers', component: ManagementComponent, canActivate:[UserService] },
   { path: 'profil', component: OffersComponent, canActivate:[UserService] },
   { path: 'offer/reservation/:name', component: ReservationComponent, canActivate:[UserService] },
   { path: 'offers/:name', component: OfferComponent, canActivate:[UserService] },
