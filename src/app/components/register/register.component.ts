@@ -38,11 +38,7 @@ export class RegisterComponent implements OnInit {
 
   handleSuccesRegistration(data:object): void {
     console.log(data)
-    this.isValidLogin()
-    if (this.isValidLog) {
-      this.router.navigate(['login'])
-    }
-    this.router.navigate(['manageOffers'])
+    this.router.navigate(['login'])
   }
 
   handleErrorRegistration(error: { error: { message: any; }; }): void {
@@ -50,7 +46,7 @@ export class RegisterComponent implements OnInit {
   }
 
   public isValidLogin() {
-    this.validateService.isValidLogin().subscribe(data => this.isValidLog = data, error => console.log("User Is Not Logged ind"))
+    this.validateService.isValidLogin().subscribe(data => this.isValidLog = data, error => console.log("User Is Not Logged in"))
   }
 
   public isValidLoginAdmin() {

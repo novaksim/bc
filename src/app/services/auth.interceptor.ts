@@ -14,13 +14,9 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private  authService: AuthServiceService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(request.params.get('intercept'));
-
-    if (request.params.get('intercept')) {
+        if (request.params.get('intercept')) {
       return next.handle(request);
-
     }
-    console.log("B");
 
     request = request.clone({
       setHeaders: {
